@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="fromValue"> +
+    <input type="text" id="toValue"> =
+    <input type="text" id="result">
+    <input type="button" id="btn" value="OK">
+    <script>
+        var btn = document.getElementById("btn");
+           
+            
+        btn.onclick = function() {
+
+            var fv = document.getElementById("fromValue").value;
+            var tv = document.getElementById("toValue").value;
+            var re = document.getElementById("result").value;
+
+            fv = parseInt(fv);
+            tv = parseInt(tv);
+            var result = "hello";
+            result = 0;
+            // 1 ~ 10 까지 합.
+            for(var i = fv; i <= tv; i++) {
+                result += i;
+            }
+            console.log(result);
+            document.getElementById("result").value = result;
+        }
+    </script>
+</body>
+</html>
