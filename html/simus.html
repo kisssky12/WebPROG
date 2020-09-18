@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html/simus.html</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+        background-image: url("logo.jpg");
+        background-size: 150px;
+        padding: 10px;
+        text-align: center;
+        font-size: 35px;
+        color: white;
+    }
+
+    nav {
+        float: left;
+        width: 15%;
+        height: 600px;
+        background: #ccc;
+        padding: 20px;
+    }
+
+    /* Style the list inside the menu */
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    article {
+
+        float: left;
+        width: 85%;
+        background-color: #f1f1f1;
+        height: 600px;
+    }
+
+
+    @media (max-width: 600px) {
+
+        nav,
+        article {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    li {
+        display: inline;
+    }
+
+    a {
+        display: block;
+
+        .container {
+            width: 600px;
+            height: 400px;
+            overflow: auto;
+        }
+
+        .container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background-color: #2f3542;
+            border-radius: 10px;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background-color: grey;
+            border-radius: 10px;
+            box-shadow: inset 0px 0px 5px white;
+        }
+</style>
+</head>
+
+<body>
+
+    <h2>버킷리스트(여행)</h2>
+
+
+    <header>
+        <h2>배낭 그리고 여행</h2>
+    </header>
+
+    <section>
+        <nav>
+            <ul>
+                <a href="#">뉴질랜드</a>
+                <a href="#">그랜드캐니언</a>
+                <a href="#">캐나다 오로라</a>
+                <a href="#">환상과 환락의 섬 이비자</a>
+            </ul>
+        </nav>
+
+        <article>
+            <h1 align="center">뉴질랜드</h1>
+            <li><img style="margin-bottom: 95px; margin-left: 30px;" src="newzealland.jpg" alt="Cinque Terre"
+                    width="300" height="200"></li>
+
+            <li><iframe style="margin-left: 950px; margin-top: -300px;" width="650" height="500"
+                    src="https://www.youtube.com/embed/Mu4l2OYqhAw" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                    gyroscope; picture-in-picture" allowfullscreen></iframe></li>
+
+            <li>
+                <div class="container" style="margin-left: 345px; margin-top: -500px; ">
+                    <iframe src="https://korean.jinhee.net/194" frameborder="0" style="width: 600px; height: 500px;"></iframe>
+                </div>
+            </li>
+            </a>
+            <p></p>
+            <p></p>
+        </article>
+    </section>
+
+</body>
+
+</html>
