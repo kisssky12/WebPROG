@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    li {
+        display: inline;
+        border: 1px solid gold;
+    }
+</style>
+</head>
+<body>
+
+<p>Display a list of links as a horizontal menu:</p>
+
+<ul>
+  <li><a href="/html/default.asp" target="_blank">HTML</a></li>
+  <li><a href="/css/default.asp" target="_blank">CSS</a></li>
+  <li><a href="/js/default.asp" target="_blank">JavaScript</a></li>
+</ul>
+
+<button id="btn">클릭</button>
+<button id="show">보기</button>
+
+<script>
+    var btn = document.getElementById("btn"); //btn을 가져옴.
+    console.log(btn); 
+    btn.onclick = function() {
+        var lis = document.querySelectorAll("li");
+        for(var i=0; i<lis.length; i++) {
+            lis[i].style.display = "none" // 안보인다.
+        }
+    }
+
+    var show = document.getElementById("show"); //btn을 가져옴.
+    console.log(show); 
+    show.onclick = function() {
+        var lis = document.querySelectorAll("li");
+        for(var i=0; i<lis.length; i++) {
+            lis[i].style.display = "inline" // 보인다.
+        }
+    }
+</script>
+
+</body>
+</html>
