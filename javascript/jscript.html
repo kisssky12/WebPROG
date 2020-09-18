@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/jscript.html</title>
+</head>
+
+<body>
+    <h2 id="h2">자바스크립트...</h2>
+    <button id = "fontSize">폰트변경</button>
+    <button id = "btnOn">Turn On Light</button>
+    <button id = "showoff">숨기기</button>
+    <button id = "showon">나타내기</button>
+    <img src="https://www.w3schools.com/js/pic_bulboff.gif" style="width: 100px;">
+    <button onclick="turnoff()">turn Off Light</button>
+
+    <script>
+        var sw = document.getElementById("showoff");
+        sw.onclick = function() {
+            document.getElementById("h2").style.display = "none";
+        }
+
+        var so = document.getElementById("showon");
+        so.onclick = function() {
+            document.getElementById("h2").style.display = "inline";
+        }
+        
+
+
+        var fs = document.getElementById("fontSize");
+        fs.onclick = function() {
+            document.getElementById("h2").style.fontSize = "30px";
+        }
+
+        var btn = document.getElementById("btnOn");
+        btn.onclick = function () {
+            var img = document.getElementsByTagName("img");
+            img[0].src = "https://www.w3schools.com/js/pic_bulbon.gif";
+            // img[0].setAttribute("scr", "https://www.w3schools.com/js/pic_bulbon.gif");
+        }
+
+        function turnoff() {
+            var img = document.getElementsByTagName("img");
+            img[0].src = "https://www.w3schools.com/js/pic_bulboff.gif";
+            // img[0].setAttribute("scr", "https://www.w3schools.com/js/pic_bulboff.gif");
+        }
+
+    </script>
+</body>
+
+</html>
