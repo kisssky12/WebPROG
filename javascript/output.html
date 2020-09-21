@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>output.html</title>
+</head>
+
+<body>
+
+    <div id="showResult" style="border: 1px solid red;"></div>
+    
+    <script>
+    
+        //자바스크립트 소스는 스트립트 안에 들어가야 함.
+        //쓰는 이유는 웹브라우저 안에 있는 요소(태그, 오브젝트 활용) 
+        var num1 = 10; //var 변수선언 num 숫자선언
+        var num2 = 20;
+
+        var result = num1 + num2 + 5;
+
+        var elem = document.getElementById("showResult");
+        elem.innerHTML = "<b>" + result + "</b>"; //innerHTML하는 속성(필드) 값은 넣음.
+        // elem.innerText = result; //요소 안에 문자만 담겠다는 속성(필드).
+        document.write("결과: " + result);
+        // window.print();       // 프린트출력페이지에서 결과값을 볼 수 있음.
+        // window.alert(result); // alert 박스에서 결과값을 볼 수 있음.
+        // console.log(elem);
+        // console.log(result);  // system.print.ln이랑 같은 의미 F12누르면 값이 나옴. 
+    
+    </script>
+</body>
+
+</html>

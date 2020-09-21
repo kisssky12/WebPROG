@@ -9,6 +9,7 @@
 <style>
     * {
         box-sizing: border-box;
+        overflow: auto;
     }
 
     body {
@@ -17,11 +18,12 @@
 
     header {
         background-image: url("logo.jpg");
-        background-size: 150px;
+        background-size: contain;
         padding: 10px;
         text-align: center;
         font-size: 35px;
-        color: white;
+        color: black;
+        text-shadow: 1px 1px 2px white, 0 0 25px yellow, 0 0 5px darkblue;
     }
 
     nav {
@@ -32,20 +34,29 @@
         padding: 20px;
     }
 
-    /* Style the list inside the menu */
     nav ul {
         list-style-type: none;
         padding: 0;
     }
 
     article {
-
         float: left;
         width: 85%;
         background-color: #f1f1f1;
         height: 600px;
     }
 
+    div {
+        width: 220px;
+        height: 100px;
+        background: white;
+        transition: width 2s, height 4s;
+    }
+
+    div:hover {
+        width: 250px;
+        height: 350px;
+    }
 
     @media (max-width: 600px) {
 
@@ -88,21 +99,30 @@
 
 <body>
 
-    <h2>버킷리스트(여행)</h2>
-
+    
 
     <header>
         <h2>배낭 그리고 여행</h2>
+        <h2 a align="center" style="font-size: 20px;">
+            부제:                                                                                                                                                                                                    한번의 인생 즐겨라! 그리고 떠나라!</h2>
     </header>
 
     <section>
         <nav>
             <ul>
+                <a href="http://localhost/webprog/first.html" targer="_self">홈으로</a>
                 <a href="#">뉴질랜드</a>
                 <a href="#">그랜드캐니언</a>
                 <a href="#">캐나다 오로라</a>
-                <a href="#">환상과 환락의 섬 이비자</a>
-                <a href="#">지금 당장 티켓팅!</a>
+                <a href="#">환상과 환락의 섬 이비자</a><br>
+                <div align="center">
+                    <p>지금 당장 준비하세요!</p>
+                    <a href="https://www.skyscanner.co.kr/">항공예약<img src="skyscanner.JPG"></a>
+                    <a href="https://www.hotelscombined.co.kr/">호텔숙박예약<img src="1.JPG"></a>
+                    <a href="https://www.tripadvisor.co.kr/Restaurants-g255104-New_Zealand.html">맛집/기타
+                    <img src="3.JPG"</a>
+                    <a href="http://overseas.mofa.go.kr/nz-en/index.do">뉴질랜드대사관<img src="2.JPG"></a>
+                </div>
             </ul>
         </nav>
 
@@ -112,14 +132,14 @@
                     width="300" height="200"></li>
 
             <li><iframe style="margin-left: 950px; margin-top: -300px;" width="650" height="500"
-                    src="https://www.youtube.com/embed/Mu4l2OYqhAw" frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                    src="https://www.youtube.com/embed/Mu4l2OYqhAw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
                     gyroscope; picture-in-picture" allowfullscreen></iframe></li>
 
             <li>
-                <div class="container" style="margin-left: 345px; margin-top: -500px; ">
-                    <iframe src="https://korean.jinhee.net/194" frameborder="0" style="width: 600px; height: 500px;"></iframe>
-                </div>
+                <a class="container" style="margin-left: 345px; margin-top: -500px; ">
+                    <iframe src="https://korean.jinhee.net/194" frameborder="0"
+                        style="width: 600px; height: 500px;"></iframe>
+                </a>
             </li>
             </a>
             <p></p>
