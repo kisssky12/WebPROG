@@ -6,40 +6,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>test1.html</title>
 </head>
-    <style>
-        .sun {
-            background-color: pink;
-            color: white;
-        }
-        .sat {
-            background-color: skyblue;
-            color: white;
-        }
-    </style>
+<style>
+    .sun {
+        background-color: pink;
+        color: white;
+    }
+
+    .sat {
+        background-color: skyblue;
+        color: white;
+    }
+</style>
+<div id="showResult" style="border: 1px solid red;"></div>
+
 <body>
-
-
-
     <script>
-        var cols = ["일","월", "화", "수", "목", "금","토"];
+        var cols = ["일", "월", "화", "수", "목", "금", "토"];
 
-
-
-
-
-
+        cols.forEach(function (a, b, c) { // 각각에 대해서 익명함수를 실행하세요.
+            console.log(a, b, c);
+        });
 
         var today = new Date();
-        console.log(today.getFullYear());
-        console.log(today.getMonth());
-        console.log(today.getDate());
+        console.log(today.getFullYear());   //년
+        console.log(today.getMonth());      //월 
+        console.log(today.getDate());       //일
         var year = today.getFullYear();
         var month = today.getMonth();
         var todate = today.getDate();
         today.setDate(1);
-        console.log("todate: " + today.getDate());
-        console.log("today: " + today.getDay());
-        console.log(new Date(2020, 8, 0).getDate());
+        console.log("todate: " + today.getDate());    //todate: 1
+        console.log("today: " + today.getDay());      //today: 2
+        console.log(new Date(2020, 8, 0).getDate());  // 31
+
+        var i = 1;
+        sum = 0;
+        
+        var elem = document.getElementById("showResult");
+        var tag = "<table border='5' red;><tr>";
+        cols.forEach(function (a, b, c) {
+            for(var i =0; i < 6; i++) {
+                for(var j=0; j < 7; j++) {
+                    sum++;
+                }
+            }
+            if(sum>today.getDay()){
+                if(sum<=new Date(2020,9,0).getDate()+today.getDay()){
+                    
+                }
+            }
+        
+
+            if (b == 0) {
+                tag += "<td class = 'sun';'>" + a + "</td>"
+            } else if (b == 6) {
+                tag += "<td class = 'sat''>" + a + "</td>"
+            } else {
+                tag += "<td>" + a + "</td>"
+            }
+        });
+
+        while (i <= 30) {
+            if (i % 7 == 1) {
+                tag += "<tr><tr><td class = 'sun'>" + i + "</td>";
+            } else if (i % 7 == 0) {
+                tag += "<td class = 'sat'>" + i + "</td>";
+            } else {
+                tag += "<td>" + i + "</td>"
+            }
+            i++;
+        }
+
+        console.log(tag);
+        tag += "</tr></table>";
+        elem.innerHTML = tag;
     </script>
 </body>
 

@@ -6,22 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>output.html</title>
 </head>
-    <style>
-        .sun {
-            background-color: red;
-            color: white;
-        }
-        .sat {
-            background-color: blueviolet;
-            color: white;
-        }
-    </style>
+<style>
+    .sun {
+        background-color: red;
+        color: white;
+    }
+
+    .sat {
+        background-color: blueviolet;
+        color: white;
+    }
+</style>
+
 <body>
 
     <div id="showResult" style="border: 1px solid red;"></div>
 
     <script>
-        var cols = ["일","월", "화", "수", "목", "금","토"];
+        var cols = ["일", "월", "화", "수", "목", "금", "토"];
         // for(var i=0; i<cols.length; i++) {
         //     console.log(cols[i]);
         // }
@@ -29,9 +31,9 @@
         //     console.log(col);
         // }
 
-        cols.forEach(function(a,b,c) { // 각각에 대해서 익명함수를 실행하세요.
-            console.log(a,b,c);
-        }); 
+        cols.forEach(function (a, b, c) { // 각각에 대해서 익명함수를 실행하세요.
+            console.log(a, b, c);
+        });
 
         // var i = 5;
         // var elem = document.getElementById("showResult");
@@ -56,11 +58,11 @@
         //     tag += "<td>" + col + "</td>"
         // }
         cols.forEach(function (a, b, c) {
-            if (b==0) {
+            if (b == 0) {
                 tag += "<td class = 'sun';'>" + a + "</td>"
-            } else if(b==6) {
-            tag += "<td class = 'sat''>" + a + "</td>"
-            
+            } else if (b == 6) {
+                tag += "<td class = 'sat''>" + a + "</td>"
+
 
             } else {
                 tag += "<td>" + a + "</td>"
@@ -70,7 +72,7 @@
         while (i <= 30) {
             if (i % 7 == 1) {
                 tag += "<tr><tr><td class = 'sun'>" + i + "</td>";
-            } else if(i % 7 == 0) {
+            } else if (i % 7 == 0) {
                 tag += "<td class = 'sat'>" + i + "</td>";
             } else {
                 tag += "<td>" + i + "</td>"
