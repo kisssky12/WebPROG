@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test1-3.html</title>
+    <style>
+        .table {
+            width: 500px;
+            height: 500px;
+            text-align: center;
+            border-collapse: collapse;
+            border: solid 2px black;
+        }
+
+        .sunday {
+            background: red;
+            color: white;
+        }
+
+        .saturday {
+            background: blue;
+            color: white;
+        }
+
+        td:hover {
+            background: yellow;
+            border-radius: 50%;
+            color: black;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 25px;
+            text-align: center;
+        }
+
+        .inputDiv {
+            padding: 3% 15%
+        }
+    </style>
+</head>
+
+<body>
+    <div class="inputDiv">
+        <input id="yearBox" type="number" min="1900" max="2099" value=2020>
+        <input id="monthBox" type="number" min="0" max="13" value=9>
+
+    </div>
+    <div class="bigDiv" id="showResult"> </div>
+
+    <script>
+        var cols = ['월', '화', '수', '목', '금', '토', '일'];
+        var year = 2020;
+        var month = 9;
+
+        var today = new Date(year, month - 1, 1);
+        var lastDayOfMonth = new Date(year, month, 0).getDate(); //이번 달의 날짜 수
+        var day = today.getDay();//이번 달의 시작 요일
+
+        monthBox = document.getElementById("monthBox");
+        yearBox = document.getElementById("yearBox");
+        monthBox.onchange = setDate;
+        yearBox.onchange = setDate;
+
+        //날짜 넣기 함수
+        function setDate() {
+            month = document.getElementById("monthBox").value;
+            year = document.getElementById("yearBox").value;
+            if (month == 0) {
+                year -= 1;
+                month = 12;
+                document.getElementById("monthBox").value = month;
+                document.getElementById("yearBox").value = year;
+            }
+            if (month == 13) {
+                year++;
+                month = 1;
+                document.getElementById("monthBox").value = month;
+                document.getElementById("yearBox").value = year;
+            }
+            reset();
+        }
+
+        var i = 1;
+        var k = 1;
+        var elem = document.getElementById("showResult");
+        var tag = "<table border='1' class='table'><caption>알파카 숫자 달력</caption><tr>";
+
+        //요일 넣기
+        cols.forEach(function (a, b, c) {
+            if (b == 0) {
+                tag += "<td class='sunday'>" + a + "</td>";
+            } else if (b == 6) {
+                tag += "<td class='saturday'>" + a + "</td>";
+            } else {
+                tag += "<td class='normal'>" + a + "</td>";
+            }
+        })
+        tag += "</tr><tr>";
+
+        //시작 요일만큼 빈칸 넣기
+        while (k <= day) {
+            if (k % 7 == 1) {
+                tag += "<td class='sunday'>" + " " + "</td>";
+                k++;
+                continue;
+            }
+            tag += "<td class='normal'>" + " " + "</td>";
+            k++
+        }
+
+        //날짜 수 만큼 숫자 넣기
+        while (i <= lastDayOfMonth) {
+            if ((i + day) % 7 == 1) {
+                tag += "<td class='sunday'>" + i + "</td>"
+                i++;
+                continue;
+            }
+            if ((i + day) % 7 == 0) {
+                tag += "<td class='saturday'>" + i + "</td>"
+                tag += "</tr><tr>";
+                i++;
+                continue;
+            }
+            tag += "<td class='normal'>" + i + "</td>";
+            i++;
+        }
+
+        //남은 날짜에 칸 채우기
+        var extraDay = 1;
+        while ((lastDayOfMonth + day + extraDay) % 7 != 1) {
+            if ((lastDayOfMonth + day + extraDay) % 7 == 0) {
+                tag += "<td class='saturday'>" + " " + "</td>"
+                tag += "</tr><tr>";
+                extraDay++;
+                continue;
+            }
+            tag += "<td class='normal'>" + " " + "</td>";
+            extraDay++;
+        }
+        tag += "</tr></table>";
+        elem.innerHTML = tag;
+
+        function reset() {
+            var today = new Date(year, month - 1, 1);
+            var lastDayOfMonth = new Date(year, month, 0).getDate(); //이번 달의 날짜 수
+            var day = today.getDay();//이번 달의 시작 요일
+
+            var i = 1;
+            var k = 1;
+            var elem = document.getElementById("showResult");
+            var tag = "<table border='1' class='table'><tr>";
+
+            //요일 넣기
+            cols.forEach(function (a, b, c) {
+                if (b == 0) {
+                    tag += "<td class='sunday'>" + a + "</td>";
+                } else if (b == 6) {
+                    tag += "<td class='saturday'>" + a + "</td>";
+                } else {
+                    tag += "<td class='normal'>" + a + "</td>";
+                }
+            })
+            tag += "</tr><tr>";
+
+            //시작 요일만큼 빈칸 넣기
+            while (k <= day) {
+                if (k % 7 == 1) {
+                    tag += "<td class='sunday'>" + " " + "</td>";
+                    k++;
+                    continue;
+                }
+                tag += "<td class='normal'>" + " " + "</td>";
+                k++
+            }
+
+            //날짜 수 만큼 숫자 넣기
+            while (i <= lastDayOfMonth) {
+                if ((i + day) % 7 == 1) {
+                    tag += "<td class='sunday'>" + i + "</td>"
+                    i++;
+                    continue;
+                }
+                if ((i + day) % 7 == 0) {
+                    tag += "<td class='saturday'>" + i + "</td>"
+                    tag += "</tr><tr>";
+                    i++;
+                    continue;
+                }
+                tag += "<td class='normal'>" + i + "</td>";
+                i++;
+            }
+
+            //남은 날짜에 칸 채우기
+            var extraDay = 1;
+            while ((lastDayOfMonth + day + extraDay) % 7 != 1) {
+                if ((lastDayOfMonth + day + extraDay) % 7 == 0) {
+                    tag += "<td class='saturday'>" + " " + "</td>"
+                    tag += "</tr><tr>";
+                    extraDay++;
+                    continue;
+                }
+                tag += "<td class='normal'>" + " " + "</td>";
+                extraDay++;
+            }
+            tag += "</tr></table>";
+            elem.innerHTML = tag;
+        }//end of function
+    </script>
+</body>
+
+</html>

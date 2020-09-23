@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test1-2.html</title>
+</head>
+
+<body>
+
+    <div id="showResult" style="border : 1px solid red;"></div>
+    <script>
+        var today = new Date(2020, 8, 1);  //9월 1일 달력
+        var todate = today.getDate();
+
+        console.log("todate: " + today.getDate());
+        console.log("today: " + today.getDay());
+        console.log(new Date(2020, 9, 0).getDate());
+
+        var sum = 0;
+        var emem = document.getElementById("showResult");
+        var cols = ['일', '월', '화', '수', '목', '금', '토']
+        var tag = "<table border  = '1'><tr>";
+
+        cols.forEach(function (a, b, c) {
+            if (b) {
+                tag += "<td>" + a + "</td>";
+            } else {
+                tag += "<td style='background-color:red';>" + a + "</td>";
+            }
+        })
+        tag += "</tr>"
+        for (var i = 0; i <= 5; i++) {    //행 만들기
+            for (var j = 0; j < 7; j++) {  //열 만들기
+                sum++;              //today.getday() : 요일 비교할라고 sum++
+                if (sum > today.getDay()) {
+                    if (sum <= new Date(2020, 9, 0).getDate() + today.getDay()) {
+                        //9월 마지막날짜 : 30 + today.getday() : 2 = 32 이따 뒤에서 2 뺴줌
+                        if (sum % 7 == 1) {
+                            tag += "<td style='background-color:red;'>" + (sum - today.getDay()) + "</td>"
+                            // sum-today.getday() : (sum%7==1) 조건의 sum에 - today.getday(); 해서 날짜 맞춰주기
+                        } else {
+                            tag += "<td>" + (sum - today.getDay()) + "</td>";
+                            // sum-today.getday() : 나머지 sum에 - today.getday(); 해서 날짜 맞춰주기
+                        }
+                    }
+                } else {
+                    tag += "<td></td>";
+                    //빈공간 공백
+                }
+            }
+            tag += "</tr><tr>";
+        }
+        tag += "</tr></table>";
+
+        emem.innerHTML = tag;
+    </script>
+</body>
+
+</html>

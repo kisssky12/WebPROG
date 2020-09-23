@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom2.html</title>
+    <style>
+        .lis {
+            background-color: blueviolet;
+        }
+    </style>
+    <script src="dom.js"></script>
+</head>
+
+<body id="bdy" onload="loadPage()">
+
+    <script>
+        document.querySelectorAll("body");
+        let bdy = document.getElementsByTagName("body");
+        bdy[0].innerHTML = "<h1>Hello</h1>";
+
+        //<ul><li>수박</ul></li>
+        let $text = document.createTextNode("수박");
+        let $ul = document.createElement("ul"); //변수이름에 사용가능 $, _ (특별한 기능X)
+        let $li = document.createElement("li"); // ul(부모) - li(자식) - text(손자)
+        $li.setAttribute("class", "lis");
+
+        $ul.appendChild($li);
+        $li.appendChild($text);
+
+        $li = document.createElement("li"); // li가 하나 더 필요
+        $text = document.createTextNode("망고"); // text도 하나 더 필요"망고"
+        $li.setAttribute("style", "background: yellow;");
+        $ul.appendChild($li);
+        $li.appendChild($text);
+
+        $li = document.createElement("li");
+        $text = document.createTextNode("용과");
+        $ul.appendChild($li);
+        $li.appendChild($text);
+
+        bdy[0].appendChild($ul);
+
+        let $div = document.createElement("div");
+        let $p = document.createElement("p");
+        let $h2 = document.createElement("h2");
+
+        $text = document.createTextNode("Hello");
+        $p.setAttribute("style", "background: gold;");
+        $div.appendChild($p);
+        $p.appendChild($text);
+
+        $text = document.createTextNode("World");
+        $h2.setAttribute("style", "background: black; color: white;");
+        $div.appendChild($h2);
+        $h2.appendChild($text);
+
+
+        bdy[0].appendChild($div);
+    </script>
+
+</body>
+
+</html>

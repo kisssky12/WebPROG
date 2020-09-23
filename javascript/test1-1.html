@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test1.html</title>
+    <title>test1-1.html</title>
 </head>
 <style>
     .sun {
@@ -41,21 +41,21 @@
 
         var i = 1;
         sum = 0;
-        
+
         var elem = document.getElementById("showResult");
         var tag = "<table border='5' red;><tr>";
         cols.forEach(function (a, b, c) {
-            for(var i =0; i < 6; i++) {
-                for(var j=0; j < 7; j++) {
+            for (var i = 0; i < 6; i++) {
+                for (var j = 0; j < 7; j++) {
                     sum++;
                 }
             }
-            if(sum>today.getDay()){
-                if(sum<=new Date(2020,9,0).getDate()+today.getDay()){
-                    
+            if (sum > today.getDay()) {
+                if (sum <= new Date(2020, 9, 0).getDate() + today.getDay()) {
+
                 }
             }
-        
+
 
             if (b == 0) {
                 tag += "<td class = 'sun';'>" + a + "</td>"
