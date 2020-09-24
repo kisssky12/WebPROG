@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="showResult"></p>
+    <button onclick="showRowCnt()">보여줘</button><br>
+    <div>
+        <input type="text" id="id">
+        <input type="text" id="first_name">
+        <input type="text" id="last_name">
+        <input type="text" id="email">
+        <input type="text" id="gender"><br>
+    </div>
+    <button id="update">변경</button>
+    <script>
+        let data = [{
+                "id": 1,
+                "first_name": "Donica",
+                "last_name": "MacFayden",
+                "email": "dmacfayden0@unc.edu",
+                "gender": "Female",
+                "ip_address": "74.103.254.206"
+            },
+            {
+                "id": 2,
+                "first_name": "Bren",
+                "last_name": "Sabine",
+                "email": "bsabine1@squidoo.com",
+                "gender": "Male",
+                "ip_address": "156.128.39.56"
+            },
+            {
+                "id": 3,
+                "first_name": "Deck",
+                "last_name": "Tyres",
+                "email": "dtyres2@hugedomains.com",
+                "gender": "Male",
+                "ip_address": "178.184.211.55"
+            },
+            {
+                "id": 4,
+                "first_name": "Prince",
+                "last_name": "Symmons",
+                "email": "psymmons3@imageshack.us",
+                "gender": "Male",
+                "ip_address": "45.107.217.121"
+            },
+            {
+                "id": 5,
+                "first_name": "Aloysius",
+                "last_name": "Urlin",
+                "email": "aurlin4@sakura.ne.jp",
+                "gender": "Male",
+                "ip_address": "171.152.44.8"
+            },
+            {
+                "id": 6,
+                "first_name": "Nelie",
+                "last_name": "Winder",
+                "email": "nwinder5@slate.com",
+                "gender": "Female",
+                "ip_address": "43.116.127.68"
+            },
+            {
+                "id": 7,
+                "first_name": "Derward",
+                "last_name": "Fairtlough",
+                "email": "dfairtlough6@liveinternet.ru",
+                "gender": "Male",
+                "ip_address": "119.87.170.227"
+            },
+            {
+                "id": 8,
+                "first_name": "Bondy",
+                "last_name": "Russon",
+                "email": "brusson7@thetimes.co.uk",
+                "gender": "Male",
+                "ip_address": "161.79.209.244"
+            },
+            {
+                "id": 9,
+                "first_name": "Goldie",
+                "last_name": "Tomet",
+                "email": "gtomet8@livejournal.com",
+                "gender": "Female",
+                "ip_address": "42.142.209.177"
+            },
+            {
+                "id": 10,
+                "first_name": "Clarissa",
+                "last_name": "Klimov",
+                "email": "cklimov9@disqus.com",
+                "gender": "Female",
+                "ip_address": "60.242.246.202"
+            },
+            // {
+            //     "id": 11,
+            //     "first_name": "Livia",
+            //     "last_name": "Garvill",
+            //     "email": "lgarvilla@examiner.com",
+            //     "gender": "Female",
+            //     "ip_address": "8.218.94.125"
+            // },
+            // {
+            //     "id": 12,
+            //     "first_name": "Ronnie",
+            //     "last_name": "Locks",
+            //     "email": "rlocksb@vinaora.com",
+            //     "gender": "Female",
+            //     "ip_address": "157.21.149.157"
+            // },
+            // {
+            //     "id": 13,
+            //     "first_name": "Ashil",
+            //     "last_name": "Leahy",
+            //     "email": "aleahyc@unicef.org",
+            //     "gender": "Female",
+            //     "ip_address": "211.231.80.62"
+            // },
+            // {
+            //     "id": 14,
+            //     "first_name": "Jesse",
+            //     "last_name": "Saer",
+            //     "email": "jsaerd@angelfire.com",
+            //     "gender": "Male",
+            //     "ip_address": "129.141.206.217"
+            // },
+            // {
+            //     "id": 15,
+            //     "first_name": "Pammi",
+            //     "last_name": "Jent",
+            //     "email": "pjente@huffingtonpost.com",
+            //     "gender": "Female",
+            //     "ip_address": "217.69.5.18"
+            // },
+            // {
+            //     "id": 16,
+            //     "first_name": "Jewelle",
+            //     "last_name": "Harbage",
+            //     "email": "jharbagef@mashable.com",
+            //     "gender": "Female",
+            //     "ip_address": "45.173.130.107"
+            // },
+            // {
+            //     "id": 17,
+            //     "first_name": "Arlina",
+            //     "last_name": "Considine",
+            //     "email": "aconsidineg@paginegialle.it",
+            //     "gender": "Female",
+            //     "ip_address": "102.151.56.18"
+            // },
+            // {
+            //     "id": 18,
+            //     "first_name": "Taber",
+            //     "last_name": "Beaumont",
+            //     "email": "tbeaumonth@cbslocal.com",
+            //     "gender": "Male",
+            //     "ip_address": "107.245.254.22"
+            // },
+            // {
+            //     "id": 19,
+            //     "first_name": "Magdalena",
+            //     "last_name": "Sutterby",
+            //     "email": "msutterbyi@free.fr",
+            //     "gender": "Female",
+            //     "ip_address": "202.245.117.137"
+            // },
+            // {
+            //     "id": 20,
+            //     "first_name": "Wilma",
+            //     "last_name": "Dilawey",
+            //     "email": "wdilaweyj@discuz.net",
+            //     "gender": "Female",
+            //     "ip_address": "153.92.236.110"
+            // }
+        ];
+
+        // for (let field in data[19]) { //object안의 field를 가져올때 in !!
+        //     console.log(field, data[19][field]);
+        // }
+        // for (let datum of data) { //배열의 값을 가져올때 of !!
+        //     console.log(datum);
+        // }
+        // console.log("----------------------");
+
+        let fields = ["id", "first_name", "last_name", "email", "gender", "button"]
+        let $table, $tr, $td, $text;
+        $table = document.createElement("table");
+        $table.setAttribute("border", '1');
+
+        // 필드..
+        $tr = document.createElement("tr");
+
+        $tr.addEventListener("mouseover", function () {
+            this.style.background = "red";
+        });
+        $tr.addEventListener("mouseout", function () {
+            this.style.background = "";
+        });
+
+        $table.appendChild($tr);
+
+        for (let title of fields) {
+            $td = document.createElement("th");
+            $text = document.createTextNode(title.replace("_", "").toUpperCase()) // replace : _언더바를 "" 공백으로
+            $td.appendChild($text);
+            $tr.appendChild($td);
+        }
+
+        data.forEach(function (obj, idx, ary) {
+            $tr = document.createElement("tr");
+            $tr.addEventListener("click", function () {
+                document.getElementById("id").value = this.childNodes[0].firstChild.nodeValue;
+                console.log(document.getElementById("id").value);
+                document.getElementById("first_name").value = this.childNodes[1].firstChild.nodeValue;
+                document.getElementById("last_name").value = this.childNodes[2].firstChild.nodeValue;
+                document.getElementById("email").value = this.childNodes[3].firstChild.nodeValue;
+                document.getElementById("gender").value = this.childNodes[4].firstChild.nodeValue;
+                localStorage.setItem("rowNum", this.childNodes[0].firstChild.nodeValue);
+                localStorage.setItem("first_name", this.childNodes[1].firstChild.nodeValue);
+                localStorage.setItem("last_name", this.childNodes[2].firstChild.nodeValue);
+            });
+            // 한건을 tr에 담기.
+            for (let field of fields) {
+                if (field == 'button') {
+                    $td = document.createElement("td");
+                    let btn = document.createElement("button");
+                    btn.innerHTML = "수정";
+                    $td.appendChild(btn);
+                    $tr.appendChild($td);
+                    btn.onclick = function () {
+                        let id = this.parentNode.parentNode.childNodes[0].firstChild.nodeValue;
+                        let fName = this.parentNode.parentNode.childNodes[1].firstChild.nodeValue;
+                        let lName = this.parentNode.parentNode.childNodes[2].firstChild.nodeValue;
+                        let email = this.parentNode.parentNode.childNodes[3].firstChild.nodeValue;
+                        let gender = this.parentNode.parentNode.childNodes[4].firstChild.nodeValue;
+                        window.location.href =
+                            "jsonDetail.jsp?id=" + id + "&first_name=" + fName + "&last_name=" + lName +
+                            "&email=" + email + "&gender=" + gender;
+                    }
+                } else {
+                    // 필드를 td에 담기.
+                    $td = document.createElement("td");
+                    $text = document.createTextNode(obj[field]);
+                    $td.appendChild($text);
+                    $tr.appendChild($td);
+                }
+                //마우스 이벤트
+                $tr.addEventListener("mouseover", function () {
+                    this.style.background = "yellow";
+                });
+                $tr.addEventListener("mouseout", function () {
+                    this.style.background = "";
+                });
+            }
+            $table.appendChild($tr);
+        });
+        document.getElementById("showResult").appendChild($table);
+
+        var x = document.getElementsByName("id").values;
+
+        function showRowCnt() {
+            window.location = "http://www.naver.com" //<a href 와 같다
+            alert("Hello"); //작은창 띄우기
+
+        }
+        var upd = document.getElementById("update");
+
+        upd.addEventListener("click", function () {
+            console.log("here");
+            var trs = document.querySelectorAll("tr");
+
+            for (var tr of trs) {
+                if (document.getElementById("id").value == tr.childNodes[0].childNodes[0].nodeValue) {
+                    tr.childNodes[1].childNodes[0].nodeValue = document.getElementById("first_name").value;
+                    tr.childNodes[2].childNodes[0].nodeValue = document.getElementById("last_name").value;
+                    tr.childNodes[3].childNodes[0].nodeValue = document.getElementById("email").value;
+                    tr.childNodes[4].childNodes[0].nodeValue = document.getElementById("gender").value;
+                }
+            }
+        });
+        console.log(document.getElementById("id").value);
+    </script>
+</body>
+
+</html>
