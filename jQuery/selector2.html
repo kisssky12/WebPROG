@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selector2.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        let someAry = [];
+        $(function () { // $는 선택자(function자체가 선택자)
+            let lis = $('div>li');
+            console.log(lis);
+            $(lis).each(function (a, b) { // index값 다음 element(요소)값
+                console.log(a, b);
+                someAry.push(b);
+            });
+            console.clear();
+
+            $(someAry).each((a, b) => { // each
+                console.log(a, b);
+            })
+            // someAry.forEach((a, b) => { // forEach구문
+            //     console.log(a, b);
+            // })
+        });
+    </script>
+</head>
+
+<body>
+    <h1 id="title">제목</h1>
+    <h2 class="subTitle">부제목1</h2>
+    <h2 class="subTitle">부제목2</h2>
+    <div name="myDiv">
+        <h2>부제목2-1</h2>
+        <ul>
+            <li>과일1</li> <!-- div 후손 -->
+            <li>과일2</li>
+            <ol>
+                <li>복숭아</li>
+            </ol>
+        </ul>
+        <li>메뉴1</li> <!-- div 자식 -->
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+        <li>메뉴5</li>
+        <p>p태그</p>
+        <a href="#">링크</a>
+    </div>
+    <h2 class="subTitle">부제목3</h2>
+</body>

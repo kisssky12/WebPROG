@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            border: 10px double gold;
+            background-color: black;
+            width: 350px;
+        }
+
+        .row {
+            display: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .lable {
+            background-color: gold;
+            display: inline-block;
+            width: 80px;
+        }
+
+        .values {
+            background-color: gold;
+            display: inline-block;
+            width: 180px;
+        }
+
+        .button {
+            display: inline-block;
+        }
+    </style>
+    <script src="board.js"></script>
+</head>
+
+<body onload='getBoardList()'>
+    <!--onload : body가 로딩 될때-->
+    <div class='content'>
+        <h2 style="color: gold; text-align: center;">게시글</h2>
+        <div class='row'>
+            <div class='lable'>게시글번호</div>
+            <div class='values'><input type='text' name='boardNo' id='boardNo'></div>
+        </div>
+        <div class='row'>
+            <div class='lable'>제목</div>
+            <div class='values'><input type='text' name='title' id='title' value='화이팅!!'></div>
+        </div>
+        <div class='row'>
+            <div class='lable'>내용</div>
+            <div class='values'><input type='text' name='content' id='content' value='자바스크립트 열심히!'></div>
+        </div>
+        <div class=' row'>
+            <div class='lable'>작성자</div>
+            <div class='values'><input type='text' name='writer' id='writer' value='최재영'></div>
+        </div>
+        <div class='row'>
+            <div class='button'><button onclick='insertData()'>입력</button></div>
+            <div class='button'><button onclick='updateData()'>수정</button></div>
+        </div>
+    </div>
+    <h1 style="text-shadow: 0 0 3px #FF0000" ;>HTML게시판</h1>
+    <div class='button'><button onclick='deleteChecked()'>삭제</button></div>
+    <p id="main"></p>
+</body>
+
+</html>

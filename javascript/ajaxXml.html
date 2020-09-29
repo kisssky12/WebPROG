@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajaxXml.html</title>
+    <script>
+        function loadXml() { //loadXml function기능
+            let xhtp = new XMLHttpRequest(); // Ajax 비동기식 처리 / 실시간 데이터 전송
+
+            xhtp.onreadystatechange = function () {
+                if (xhtp.readyState == 4 && xhtp.status == 200) { //두 상태가 && 이라면
+                    // console.log(xhtp.responseXML); // XML타입으로 넘겨준다
+                    createPage(xhtp.responseXML);
+                }
+            }
+            xhtp.open('get', 'cd_catalog.xml', true); //cd_catalog.xml 파일 get 해오기
+            xhtp.send(); //xhtp에 호출
+        }
+
+        function createPage(data) {
+            let titles = ["노래제목", "가수", "나라", "회사", "가격", "년도"];
+            // console.log(data);
+            let tbl = document.getElementById("tbl");
+            // tbl.setAttribute('border', '1'); //border 주기
+            let tr, td, text, th;
+            let cds = data.getElementsByTagName('CD');
+
+            for (let title of titles){
+                tr = document.createElement("tr");
+                th = document.createElement("th");
+                td = document.createElement("th");
+                text = document.createTextNode(title);
+
+                td.append(text);
+                th.append(td);
+                tbl.append(th);
+            }
+
+            for (let i = 0; i < cds.length; i++) {
+                tr = document.createElement("tr");
+                for (let j = 0; j < 6; j++) {
+
+
+                    td = document.createElement("td");
+                    text = document.createTextNode(
+                        cds[i].children[j].innerHTML); // artist
+                    td.append(text);
+                    tr.append(td);     
+                }
+                //
+                // td = document.createElement("td");
+                // text = document.createTextNode(
+                //     cds[i].children[0].innerHTML); // artist
+                // td.append(text);
+                // tr.append(td);
+
+                // //
+                // td = document.createElement("td");
+                // text = document.createTextNode(
+                //     cds[i].children[1].innerHTML); // title
+                // td.append(text);
+                // tr.append(td);
+
+                // //
+                // td = document.createElement("td");
+                // text = document.createTextNode(
+                //     cds[i].children[2].innerHTML); // country
+                // td.append(text);
+                // tr.append(td);
+
+                // //
+                // td = document.createElement("td");
+                // text = document.createTextNode(
+                //     cds[i].children[3].innerHTML); // company
+                // td.append(text);
+                // tr.append(td);
+
+                // //
+                // td = document.createElement("td");
+                // text = document.createTextNode(
+                //     cds[i].children[4].innerHTML); // price
+                // td.append(text);
+                // tr.append(td);
+
+                // //
+                // td = document.createElement("td");
+                // text = document.createTextNode(
+                //     cds[i].children[5].innerHTML); // year
+                // td.append(text);
+                // tr.append(td);
+                //
+                tbl.append(tr);
+            }
+            console.log(cds[0].innerHTML); //childNode
+        }
+    </script>
+</head>
+
+<body>
+    <h2>XML 요청</h2><br>
+    <button onclick="loadXml()">클릭</button>
+
+    <table id="tbl" border='1'></table>
+</body>
+
+</html>

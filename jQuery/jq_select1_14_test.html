@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jq_select1_14_test.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        $(function () {
+            //<p class=".txt1">내용</p>의 전체 상위요소를 선택합니다.
+            $(".txt1").parents()
+                .css({
+                    "border": "2px dashed#00f"
+                });
+            //<p class=".txt2">내용</p>의 전체 상위요소중 <div>만 선택합니다.
+            $(".txt2").parents("div")
+                .css({
+                    "border": "2px solid#f00"
+                });
+        });
+    </script>
+</head>
+
+<body>
+    <h1 class="title">선택자</h1>
+    <section>
+        <div>
+            <p class="txt1">내용</p> <!-- 전체 상위 요소 선택 -->
+        </div>
+    </section>
+    <section>
+        <div>
+            <p class="txt2">내용</p> <!-- 상위 요소 중 <div>만 선택 -->
+        </div>
+    </section>
+</body>
+
+</html>

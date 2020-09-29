@@ -1,244 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        input {
-            width: 80px;
-            margin-left: 20px;
-        }
-    </style>
-</head>
-
-<body>
-    <p id="showResult"></p>
-    <p id="inputBox"></p>
-
-    <!-- <input type="text" id="id">
-    <input type="text" id="first_name">
-    <input type="text" id="email"> -->
-
-    <!-- <input type="text" id="last_name">
-    <input type="text" id="gender"> -->
-    <br>
-
-    <button onclick="showRowCnt()">보여줘</button>
-    <button id="update">변경</button>
-
-
+    <title>json2.html</title>
     <script>
-
-        let data = [{
-                "id": 1,
-                "first_name": "Kean",
-                "last_name": "Arnott",
-                "email": "karnott0@narod.ru",
-                "gender": "Male",
-                "ip_address": "198.190.72.166"
-            },
-            {
-                "id": 2,
-                "first_name": "Guilbert",
-                "last_name": "Scutter",
-                "email": "gscutter1@phoca.cz",
-                "gender": "Male",
-                "ip_address": "176.25.196.116"
-            },
-            {
-                "id": 3,
-                "first_name": "Shannan",
-                "last_name": "Coppeard",
-                "email": "scoppeard2@cnet.com",
-                "gender": "Male",
-                "ip_address": "186.86.191.252"
-            },
-            {
-                "id": 4,
-                "first_name": "Suzette",
-                "last_name": "Basillon",
-                "email": "sbasillon3@buzzfeed.com",
-                "gender": "Female",
-                "ip_address": "114.93.104.38"
-            },
-            {
-                "id": 5,
-                "first_name": "Ebenezer",
-                "last_name": "Jursch",
-                "email": "ejursch4@seattletimes.com",
-                "gender": "Male",
-                "ip_address": "4.93.230.237"
-            },
-            {
-                "id": 6,
-                "first_name": "Mead",
-                "last_name": "Thomassin",
-                "email": "mthomassin5@homestead.com",
-                "gender": "Male",
-                "ip_address": "55.83.196.82"
-            },
-            {
-                "id": 7,
-                "first_name": "Dene",
-                "last_name": "Worvell",
-                "email": "dworvell6@seattletimes.com",
-                "gender": "Male",
-                "ip_address": "112.172.140.235"
-            },
-            {
-                "id": 8,
-                "first_name": "Jonathon",
-                "last_name": "Rotte",
-                "email": "jrotte7@wisc.edu",
-                "gender": "Male",
-                "ip_address": "156.242.145.27"
-            },
-            {
-                "id": 9,
-                "first_name": "Lambert",
-                "last_name": "Mariot",
-                "email": "lmariot8@uiuc.edu",
-                "gender": "Male",
-                "ip_address": "1.91.204.111"
-            },
-            {
-                "id": 10,
-                "first_name": "Shirlene",
-                "last_name": "Lount",
-                "email": "slount9@msu.edu",
-                "gender": "Female",
-                "ip_address": "7.77.117.108"
-            },
-        ];
-
-        // for(let field in data[19]){
-        //     console.log(field, data[19][field]);
-        // }
-        // for(let datum of data) {
-        //     console.log(datum);
-        // }
-
-        let table, tr, td, text;
-        table = document.createElement("table");
-        table.setAttribute('border', '1');
-
-        //필드
-        tr = document.createElement("tr");
-        table.appendChild(tr);
-        let fields = ["id", "first_name", "email", "last_name", "gender"]
-        for (let title of fields) {
-            td = document.createElement("th");
-            text = document.createTextNode(title.replace("_", "").toUpperCase()); //'_'를 없애고 대문자로 변경!
-            td.appendChild(text);
-            tr.appendChild(td);
-        }
-
-        //데이터 가져오기 
-        data.forEach(function (obj, idx, ary) {
-            // console.log(obj["first_name"]);
-            // for(let field in obj) {
-            //     console.log(`${idx} => 필드: ${field}, 값: ${obj[field]}`);
-            //     console.log(obj[field]);
-            // }
-        });
-
-        //일부만 가져오고 싶을 때
-        // let fields = ["id", "first_name", "last_name"]
-        data.forEach(function (obj, idx, ary) {
-            //한 건 가져와서 tr에 담기
-            tr = document.createElement("tr");
-            tr.addEventListener("mouseover", function () {
-                this.style.background = "yellow";
-            })
-            tr.addEventListener("mouseout", function () {
-                this.style.background = "";
-            })
-            tr.addEventListener("click", function () {
-                localStorage.setItem("rowNum", idx + 1);
-                localStorage.setItem("first_name", this.childNodes[1].firstChild
-                    .nodeValue); //firstChild = childNodes[0]
-                localStorage.setItem("email", this.childNodes[2].firstChild.nodeValue);
-                localStorage.setItem("last_name", this.childNodes[3].firstChild.nodeValue);
-                localStorage.setItem("email", this.childNodes[4].firstChild.nodeValue);
-            })
-
-            for (let field of fields) {
-                // console.log(obj[field]);
-                //필드를 td에 담기
-                td = document.createElement("td");
-                text = document.createTextNode(obj[field]);
-                td.appendChild(text);
-                tr.appendChild(td);
+        let student = {
+            name: "Hong",
+            age: 10,
+            grade: null,
+            marriage: false,
+            info: function() {
+                console.log("my name is hong")
             }
-            table.appendChild(tr);
-        });
-        document.getElementById("showResult").appendChild(table);
-
-        //필드명에 따라 input 만들기
-        for (let field of fields) {
-            label = document.createElement("label");
-            text = document.createTextNode(field);
-            br = document.createElement("br");
-            label.appendChild(text);
-            input = document.createElement("input");
-            input.setAttribute("type", text);
-            input.setAttribute("style", "margin-left: 20px");
-            document.getElementById("inputBox").appendChild(label);
-            document.getElementById("inputBox").appendChild(input);
-            document.getElementById("inputBox").appendChild(br);
         }
 
-        //클릭하면 수정창에 출력
-        let modifyAry = document.querySelectorAll("input");
-        let tds = document.querySelectorAll("tr");
-        tds.forEach((a, b, c) => {
-            tds[b].addEventListener("click", function () {
-                for (let i = 0; i < modifyAry.length; i++) {
-                    modifyAry[i].value = this.childNodes[i].childNodes[0].nodeValue;
-                }
-            })
-        })
-
-        //수정창 ID값으로 수정하기
-        update = document.getElementById("update");
-        update.addEventListener("click", function () {
-            tds.forEach((a, b, c) => {
-                let targetID = a.childNodes[0].childNodes[0].nodeValue; //표의 id값
-                let modiId = modifyAry[0].value //수정창의 id값
-                if (modiId == targetID) {
-                    for (let i = 0; i < modifyAry.length; i++) {
-                        tds[b].childNodes[i].childNodes[0].nodeValue = modifyAry[i].value;
-                    }
-                }
-            })
-        })
-
-        // console.log(data);
-        // for(let i =0; i < data.length; i++){
-        //     console.log(data[i].first_name); 
-        // }
-
-        //클릭하면 인덱스 보여주기 
-        function showRowCnt() {
-            console.log(localStorage.getItem("rowNum"));
-
-            //Id입력하고 보여줘 누르면 값 가져오기
-            tds.forEach((a, b, c) => {
-                // console.log(a.childNodes[0].childNodes[0].nodeValue);
-                let targetID = a.childNodes[0].childNodes[0].nodeValue; //표의 id값
-                let modiId = modifyAry[0].value //수정창의 id값
-                if (modiId == targetID) {
-                    for (let i = 0; i < modifyAry.length; i++) {
-                        modifyAry[i].value = tds[b].childNodes[i].childNodes[0].nodeValue;
-                    }
-                }
-
-            })
-
-        }
+        let json = JSON.stringify(student);
+        console.log(json);
     </script>
+</head>
+<body>
+    
 </body>
-
 </html>

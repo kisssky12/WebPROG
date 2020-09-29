@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>board.html</title>
+    <style>
+        .content {
+            border: 3px double skyblue;
+            width: 350px;
+            padding: 10px;
+        }
+        .row {
+            display: block;
+            height: 30px;
+            padding: auto;
+        }
+        .lable {
+            background-color: rgb(233, 233, 233);
+            display: inline-block;
+            width: 90px;
+        }
+        .values {
+            background-color: lightpink;
+            display: inline-block;
+            width: 190px;
+        }
+        .button {
+            display: inline-block;
+        }
+    </style>
+    <script src="테스트.js"></script>
+</head>
+<body onload="getBoardList()">
+    <h2>입력화면</h2>
+    <div class="content">
+        <div class="row">
+            <div class="lable">게시글 번호</div>
+            <div class="values"><input type="text" name="boardNo" id="boardNo"></div>
+        </div>
+        <div class="row">
+            <div class="lable">제목</div>
+            <div class="values"><input type="text" name="title" id="title" value="화이팅"></div>
+        </div>
+        <div class="row">
+            <div class="lable">내용</div>
+            <div class="values"><input type="text" name="content" id="content" value="자바스크립트 잠와"></div>
+        </div>
+        <div class="row">
+            <div class="lable">작성</div>
+            <div class="values"><input type="text" name="writer" id="writer" value="홍길동""></div>
+        </div>
+        <div class="row">
+            <div class="button">
+                <button onclick="insertData()">입력</button>
+            </div>
+            <div class="button">
+                <button onclick="updateData()">수정</button>
+            </div>
+        </div>
+    </div>
+<hr>
+    <h1>HTML게시판</h1>
+    <button onclick="deleteChecked()">삭제</button>
+    <p id="main"></p>
+</body>
+</html>
