@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax.html</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        //
+        //
+        //
+
+        $(document).ready(function () {
+            $.ajax({
+                url: 'mock.json',
+                type : 'get',
+                dataType: 'json',
+                success: function (a, b) {
+                    console.log(a);
+                    let data = a;
+                    // $(data).each();
+                    let ul = $('<ul />');
+                    let table = $('<table />').attr({'border': '3px'});
+
+                    for (let i = 0; i < data.length; i++) {
+                        // ul.append($('<li />').html(data[i].id + '/' + data[i].first_name));
+                    // }
+                    $('#show').append(ul);
+                    table.append($('<tr />').append($('<td />').html(data[i].id))
+                                            .append($('<td />').html(data[i].first_name))
+                                            .append($('<td />').html(data[i].last_name))
+                                            .append($('<td />').html(data[i].email))
+                                            .append($('<td />').html(data[i].gender)));
+                    }
+                    $('body').append(table);
+                },
+                error: function (a, b) {
+                    console.log(a, b);
+                }
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <p id="show"></p>
+</body>
+
+</html>

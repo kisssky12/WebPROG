@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax2.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <style>
+        table {
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'mock.json',
+                type: 'get',
+                dataType: 'json',
+                success: function (a, b) { //xhtp.readyState==4, status == 200
+                    console.log(a, b);
+                    let data = a;
+
+
+                    //$(data).each();
+                    // let ul = $('<ul />');
+                    // for (let i = 0; i < data.length; i++) {
+                    //     ul.append($('<li />').html(data[i].id + " / " + data[i].first_name));
+                    // }
+                    // $('#show').append(ul);
+                    let table = $('<table />').attr('border', '1px solied black');
+                    let tr = $('<tr />');
+                     // -----------4번째 방법---------------
+                     for (let i = 0; i < data.length; i++) {
+                        for (field in data[i]) {
+                            tr.append($('<td />').html(data[i][field]));
+                        }
+                        $(table).append(tr);
+                        tr = $('<tr />');
+
+                    }
+
+                    $('#show').append(table);
+
+                    // -----------1번째 방법---------------
+                    // let table = $('<table />').attr('border', '1px solied black');
+                    // let tr = $('<tr />');
+                    // $(data).each(function (idx, obj) {
+                    //     tr.append($('<td />').html(data[idx].id));
+                    //     tr.append($('<td />').html(data[idx].first_name));
+                    //     tr.append($('<td />').html(data[idx].last_name));
+                    //     tr.append($('<td />').html(data[idx].email));
+                    //     tr.append($('<td />').html(data[idx].gender));
+                    //     tr.append($('<td />').html(data[idx].ip_address));
+                    //     $(table).append(tr);
+                    //     tr = $('<tr />');
+                    // });
+                    // $('#show').append(table);
+
+
+                    // -----------2번째 방법---------------
+                    // let table = $('<table />').attr('border', '1px solied black');
+                    // let tr = $('<tr />');
+                    // for (let i = 0; i < data.length; i++) {
+                    //     tr.append($('<td />').html(data[i].id));
+                    //     tr.append($('<td />').html(data[i].first_name));
+                    //     tr.append($('<td />').html(data[i].last_name));
+                    //     tr.append($('<td />').html(data[i].email));
+                    //     tr.append($('<td />').html(data[i].gender));
+                    //     tr.append($('<td />').html(data[i].ip_address));
+                    //     $(table).append(tr);
+                    //     tr = $('<tr />');
+                    // }
+                    // $('#show').append(table);
+
+                    // -----------3번째 방법---------------
+                    // let table = $('<table />').attr('border', '1px solied black');
+                    // let tr = $('<tr />');
+                    // let str = ['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address'];
+                    // for (let i = 0; i < data.length; i++) {
+                    //     for (let j = 0; i < str.length; j++) {
+                    //         tr.append($('<td />').html(data[i][str[j]]));
+                    //     }
+                    //     $(table).append(tr);
+                    //     tr = $('<tr />');
+
+                    // }
+                    // $('#show').append(table);
+
+                   
+
+                },
+                error: function (a, b) {
+                    console.log(a, b);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <p id="show"></p>
+</body>
+
+</html>
