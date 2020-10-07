@@ -16,7 +16,7 @@
             console.log(data);
 
             $('#coffeeInput').on('click', function (event) {
-                // event.preventDefault();
+                event.preventDefault();
                 // $.ajax({
                 //     url: 'db에 값을 한건 입력하는 페이지',
                 //     success: function (a, b) {
@@ -28,6 +28,33 @@
                 // });
                 // console.log($('#frm').serialize());
                 // 배열의 입력으로 대신.
+                let item_no = $('#frm input[name="item_no"]').val();
+                let item = $('#frm input[name="item"]').val();
+                let content = $('#frm input[name="content"]').val();
+                let price = $('#frm input[name="price"]').val();
+                let image = $('#frm input[name="image"]').val();
+                let star = $('#frm input[name="star"]').val();
+                let category = $('#frm input[name="category"]').val();
+                let obj = {
+                    item_no: item_no,
+                    item: item,
+                    content: content,
+                    price: price,
+                    image: image,
+                    star: star,
+                    category: category
+                };
+                data.push(obj);
+
+                // 화면 반영. item_no , item, category, price, star
+                let tr = $('<tr />');
+                tr.append($('<td />').html(item_no),
+                    ($('<td />').html(item)),
+                    ($('<td />').html(category)),
+                    ($('<td />').html(price)),
+                    ($('<td />').html(star)));
+                // tr라인에 입력.
+                $('#tbl2').append(tr);
 
             });
             // 화면 출력.
@@ -35,7 +62,7 @@
         });
 
         function showData() {
-            let table = $('<table />').attr('border', '1px solied black');
+            let table = $('<table />').attr('border', '1px solied black').attr('id', 'tbl2');
             let fields = ['item_no', 'item', 'category', 'price', 'star'];
             $(data).each(function (idx, obj) {
                 let tr = $('<tr />');
@@ -81,7 +108,7 @@
                 <td><input type="text" name="category"></td>
             </tr>
             <tr align="center">
-                <td colspan="2"><button id="coffeeInput" onclick="inputData()">입력</button><button>취소</button></td>
+                <td colspan="2"><button id="coffeeInput">입력</button><button>취소</button></td>
             </tr>
         </table>
     </form>
